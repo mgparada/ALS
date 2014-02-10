@@ -43,7 +43,7 @@ x = raw_input( "Dame un numero: " )
 y = raw_input( "Dame un numero: " )
 fmtCoordenadas( x, y )
 
-#Ejercicio 4 con solucionado con format
+#Ejercicio 4 solucionado con format
 #comprobado con int() que se recibieron numeros sino excepcion
 def fmtCoordenadas( x, y ):
 	try:
