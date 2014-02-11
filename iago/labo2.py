@@ -1,6 +1,18 @@
 #Ejercicio 1 
 from math import sqrt
 
+def mayor(x):
+	if len(x) > 0:
+		return max(x)
+	else:
+		return 0
+		
+def menor(x):
+	if len(x) > 0:
+		return min(x)
+	else:
+		return 0
+
 def media(x):
 	resul = 0.0
 	if len(x) > 0:
@@ -32,13 +44,10 @@ while num > 0:
 con.pop(-1)
 
 print("la media es: {0:.2f}".format(media(con)))
-if len(con) > 0:
-	print("El maximo es:{0:}".format(max(con)))
-	print("El minimo es:{0:}".format(min(con)))
-else:
-	print("El maximo es: 0")
-	print("El minimo es: 0")
+print("El maximo es: {0:.2f}".format(mayor(con)))
+print("El minimo es: {0:.2f}".format(menor(con)))
 print("La desviacion tipica es: {0:.2f}".format(desviacion(con)))
+
 
 
 
