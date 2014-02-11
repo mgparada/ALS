@@ -48,7 +48,52 @@ print("El maximo es: {0:.2f}".format(mayor(con)))
 print("El minimo es: {0:.2f}".format(menor(con)))
 print("La desviacion tipica es: {0:.2f}".format(desviacion(con)))
 
+#Solucion labo2 ejercicio 2 notacion prefija
+'''se pone primer elemento operador, se comprueba si el siguiente es digito sino
+llamada recursiva con el indice donde comienza el nuevo operador encontrado, lo mismo
+para el segundo operando, teniendo en cuenta que comienza una posicion a la 
+derecha del primer operando'''
+def evaluar(cad,indice):
+	op = ['+','-','*','/']
+	resul = ''
+	op1 = ''
+	op2 = ''
+	indiceInicial = indice
+	lista = cad.split()
+	try:
+		if lista[indice] in op:
+			operator = lista[indice]
+			indice+=1;
+			if lista[indice].isdigit():
+				op1 = lista[indice]
+				indice+=1
+			else:
+				op1, indice = evaluar(cad,indice)		
+			if lista[indice].isdigit():
+				op2 = lista[indice]
+			else:
+				op2,indice = evaluar(cad,indice)
+			aux = len(op1)+len(operator)+len(op2)
+			resul += str(float(eval(op1+operator+op2)))
+			if indiceInicial == 0:
+				print("El resultado de evaluar "+cad+" es {0:.2f}".format(float(resul)))
+			else:
+				return resul, indiceInicial+aux
+		else:
+			raise Exception("Operador erroneo encontrado: "+lista[indice])
+	except TypeError:
+		pass
+	except Exception as e:
+		print(e)
+		
+		
+	
+		
+#prueba funcion evaluar correcta
+evaluar('/ - 1 3 * 4 6',0)
 
+#prueba funcion evaluar operador no admitido
+evaluar('/ ^ 1 3 * 4 6',0)
 
 
 
