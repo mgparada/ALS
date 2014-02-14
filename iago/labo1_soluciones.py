@@ -1,4 +1,4 @@
-#ejemplos antes de labo1
+#examples before labo1
 def doble( x ):
 	return x * 2
 
@@ -14,65 +14,66 @@ print( b )
 def foo():
 	pass
 
-#Ejercicio 2 labo1
-x = raw_input( "Dime tu nombre: " )
-print( "Hola, {0:s}".format( x ) )
+#Exercise 2 labo1
+x = raw_input( "What's your name? " )
+print( "Hello, {0:s}".format( x ) )
 
-#Ejercicio 3 labo1
+#Exercise 3 labo1
 
 def pedir():
-	return raw_input( "Dime tu nombre: " )
+	return raw_input( "What's your name? " )
 
 def mostrar(x):
-	print( "Hola, {0:s}".format( x ) )
+	print( "Hello, {0:s}".format( x ) )
 
 x = pedir()
 mostrar( x )
 
-#Ejercicio 4 labo1 solucionado con str
-#comprobado con int() que se recibieron numeros sino excepcion
+#Exercise 4 labo1 resolved with function str
+#int() test x and y are numbers if not raise exception
 def fmtCoordenadas( x, y ):
 	try:
 		int( x )
 		int( y )
 		print( "(" + str( x ) + ", " + str( y ) + ")" )
 	except Exception:
-		print( "Esperando valores coordenadas numericos" )
+		print( "Wait for numeric values")
 
-x = raw_input( "Dame un numero: " )
-y = raw_input( "Dame un numero: " )
+x = raw_input( "Input number: " )
+y = raw_input( "Input number: " )
 fmtCoordenadas( x, y )
 
-#Ejercicio 4 solucionado con format
-#comprobado con int() que se recibieron numeros sino excepcion
+#Exercise 4 resolved with function format
+#int() test x and y are numbers if not raise exception
 def fmtCoordenadas( x, y ):
 	try:
 		int( x )
 		int( y )
 		print( "({0}, {1})".format( x, y ) )
 	except Exception:
-		print( "Esperando valores coordenadas numericos" )
+		print( "Wait for numeric values" )
 
-x = raw_input( "Dame un numero: " )
-y = raw_input( "Dame un numero: " )
+x = raw_input( "Input number: " )
+y = raw_input( "Input number: " )
 fmtCoordenadas( x, y )
 
 #Ejercicio 5
-'''se piden dos numeros x e y y un operador z, se repite hasta obtener
-valores numericos como operandos y un operador, correcto o incorrecto'''
+'''Input two operands x and y, input one operator z, repeat to obtain
+numeric values to operands and an operador, correct or incorrect'''
 def pedirNumero():
 	try:
-		x = float( raw_input( "Introduce el primer operando: " ) )
-		y = float( raw_input( "Introduce el segundo operando: " ) )
-		z = raw_input( "Introduce el operador: + - * / ^   " )
+		x = float( raw_input( "Input first operand: " ) )
+		y = float( raw_input( "Input second operand: " ) )
+		z = raw_input( "Input operator: + - * / ^   " )
 		return [x,y,z]
 	except Exception:
-		print( "Operandos no numericos introducidos" )
+		print( "Operands not numerics typed" )
 		return pedirNumero()
 		
 	
-'''se hace la operacion si se ha recibido un operador correcto,
-en el caso de la division se contempla el error de division por cero'''
+'''Resolv arithmetic operation if operator is correct,
+if operator is / and second operator is zero not operation
+is performed'''
 def calculadora(x,y,z):
 	if z == '+':
 		print ( str( eval( "{0} + {1}".format( x, y) ) ) ) 
@@ -84,11 +85,11 @@ def calculadora(x,y,z):
 		try:
 			print (str(eval("{0} / {1}".format(x,y) ) ) ) 
 		except Exception:
-			print( "La division no puede ser por cero" )
+			print( "Division by zero not permited" )
 	elif z == '^':
 		print ( str( eval( "{0} ** {1}".format( x, y) ) ) ) 
 	else:
-		print( "Valor de operador no soportado o erroneo" )
+		print( "Operator incorrect or not supported" )
 
 
 x = pedirNumero()
