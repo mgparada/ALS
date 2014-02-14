@@ -57,7 +57,7 @@ x = raw_input( "Input number: " )
 y = raw_input( "Input number: " )
 fmtCoordenadas( x, y )
 
-#Ejercicio 5
+#Exercise 5
 '''Input two operands x and y, input one operator z, repeat to obtain
 numeric values to operands and an operador, correct or incorrect'''
 def pedirNumero():
