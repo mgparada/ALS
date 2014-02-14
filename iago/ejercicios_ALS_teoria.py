@@ -1,4 +1,6 @@
-# 1 Funcion a la que se le pase una lista y devuelva el inverso de esa lista
+# 1 Function inversa
+''' param l is a list
+param return l2 is reverse list of list l'''
 
 def inversa(l):
 	i = len(l)
@@ -10,19 +12,19 @@ def inversa(l):
 		
 print( inversa([1,2,3,4,5]) )
 
-# 1 Otra forma
+# 1 Second solution of inversa
 
-#def inversa2
-	l2 = [] # otra forma es l2 = list()
+def inversa2
+	l2 = [] 
 	
-	#for i in l:
-		#l2[:0] = [i] # l2.insert(0,i)
-	#return l2
+	for i in l:
+		l2[:0] = [i] # l2.insert(0,i)
+	return l2
 
-#print(inversa2([1,2,3,4,5])
+print(inversa2([1,2,3,4,5])
 
-# 2 Funcion que devuelve una lista con la sucesion de fibonacci, pasandole un numero que identifica el num de posiciones
-
+# 2 Function fibonacci
+'''param n is a number to indicate how many values of the sequence of fibonacci display'''
 def fibo(n):
 	l = [1,1]
 	i = len(l)
@@ -35,8 +37,9 @@ def fibo(n):
 
 print(fibo(10))
 
-# 3 Funcion a la q se le pasa una lista y devuelve otra lista con los elementos que se repiten mas de una vez en la lista original
-#funcion auxiliar para comprobar el numero de veces que aparece un elemento en una lista
+# 3 function to display recurrent values in list l
+
+#function to know if a elem appeared more once in list l
 def numOccurs(l, elem):
 	toret = 0
 	for item in l:
@@ -44,6 +47,7 @@ def numOccurs(l, elem):
 			toret += 1
 	return toret
 	
+#fucntion to display recurrent values	
 def repetidos(l):
 	lrep = list()
 
@@ -55,7 +59,7 @@ def repetidos(l):
 print(numOccurs([1,1,2,3,4,4,5,5,5,5,6,5], 1))
 print(repetidos([1,1,2,3,4,4,5,5,5,5,6,5]))
 
-#solucion repetidos en clase 11 febrero 2014
+#solution repetidos in class 11 febrero 2014
 def repetidos2(lista):
 	aux = []
 	l = []
@@ -74,5 +78,5 @@ def repetidos2(lista):
 			l.append(x[0])
 	return l
 	
-#prueba funcion repetidos version clase
+#test function repetidos class version 
 print(repetidos2([1,1,3,3,4]))
