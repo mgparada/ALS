@@ -1,4 +1,4 @@
-#Ejercicio 1 
+#Exercise 1 
 from math import sqrt
 
 def mayor(x):
@@ -35,155 +35,155 @@ def desviacion(x):
 	return sqrt(varianza(x))
 	
 con = []
-num = int(raw_input("Introduce un numero: "))
+num = int(raw_input("Input number: "))
 con.append(num)
 while num > 0:
-	num = int(raw_input("Introduce un numero: "))
+	num = int(raw_input("Input number: "))
 	con.append(num)
 
 con.pop(-1)
 
-print("la media es: {0:.2f}".format(media(con)))
-print("El maximo es: {0:.2f}".format(mayor(con)))
-print("El minimo es: {0:.2f}".format(menor(con)))
-print("La desviacion tipica es: {0:.2f}".format(desviacion(con)))
+print("Average is: {0:.2f}".format(media(con)))
+print("Maximum is: {0:.2f}".format(mayor(con)))
+print("Minimum is: {0:.2f}".format(menor(con)))
+print("Typical deviation is: {0:.2f}".format(desviacion(con)))
 
-#Solucion labo2 ejercicio 2 notacion prefija
-'''se pone primer elemento operador, se comprueba si el siguiente es digito sino
-llamada recursiva con el indice donde comienza el nuevo operador encontrado, lo mismo
-para el segundo operando, teniendo en cuenta que comienza una posicion a la 
-derecha del primer operando'''
-def evaluar(cad,indice):
+#Solution labo2 exercise 2 arithmetic prefix notation
+'''First elem is operator, next is digit if not 
+recursive function call with index where start new operator found, same
+to second operand, second operand always start one position to right of 
+first operand'''
+def evaluar(cad,index):
 	if len(cad) >= 5:
 		op = ['+','-','*','/']
 		resul = ''
 		op1 = ''
 		op2 = ''
-		indiceInicial = indice
+		indiceInicial = index
 		lista = cad.split()
 		try:
-			if lista[indice] in op:
-				operator = lista[indice]
-				indice+=1;
-				if lista[indice].isdigit():
-					op1 = lista[indice]
-					indice+=1
+			if lista[index] in op:
+				operator = lista[index]
+				index+=1;
+				if lista[index].isdigit():
+					op1 = lista[index]
+					index+=1
 				else:
-					op1, indice = evaluar(cad,indice)		
-				if lista[indice].isdigit():
-					op2 = lista[indice]
+					op1, index= evaluar(cad,index)		
+				if lista[index].isdigit():
+					op2 = lista[index]
 				else:
-					op2,indice = evaluar(cad,indice)
+					op2,index = evaluar(cad,index)
 				resul += str(float(eval(op1+operator+op2)))
 				if indiceInicial == 0:
-					print("El resultado de evaluar "+cad+" es {0:.2f}".format(float(resul)))
+					print("The resul of eval "+cad+" is {0:.2f}".format(float(resul)))
 				else:
 					return resul, indiceInicial+3
 			else:
-				raise Exception("Operador erroneo encontrado: "+lista[indice])
+				raise Exception("Operator incorrect found: "+lista[index])
 		except TypeError:
 			pass
 		except Exception as e:
 			print(e)
 	else:
-		print("Expresion demasiado corta para ser evaluada")
+		print("Expression too short to be evaluated")
 		
 		
 	
 		
-#prueba funcion evaluar correcta
+#test function evaluar correct
 evaluar('/ - 1 3 * 4 6',0)
 
-#prueba funcion evaluar operador no admitido
+#test function evaluar operator not admitted
 evaluar('/ ^ 1 3 * 4 6',0)
 
-#Solucion labo2 ejercicio 2 notacion postfija
-'''se pone ultimo elemento operador, se comprueba si el anterior es digito sino
-llamada recursiva con el indice donde comienza el nuevo operador encontrado, lo mismo
-para el segundo operando, teniendo en cuenta que comienza una posicion a la 
-izquierda del primer operando'''
-def evaluarPost(cad,indice):
+#Solution labo2 exercise 2 arithmetic postfix notation
+'''Last elem is operator, previous is digit if not 
+recursive function call with index where start new operator found, same
+to second operand, second operand always start one position to left of 
+first operand'''
+def evaluarPost(cad,index):
 	if len(cad) >= 5:
 		op = ['+','-','*','/']
 		resul = ''
 		op1 = ''
 		op2 = ''
-		indiceInicial = indice
+		indiceInicial = index
 		lista = cad.split()
 		try:
-			if lista[indice] in op:
-				operator = lista[indice]
-				indice-=1
-				if lista[indice].isdigit():
-					op1 = lista[indice]
-					indice-=1
+			if lista[index] in op:
+				operator = lista[index]
+				index-=1
+				if lista[index].isdigit():
+					op1 = lista[index]
+					index-=1
 				else:
-					op1, indice = evaluarPost(cad,indice)
-				if lista[indice].isdigit():
-					op2 = lista[indice]
+					op1, index = evaluarPost(cad,index)
+				if lista[index].isdigit():
+					op2 = lista[index]
 				else:
-					op2,indice = evaluarPost(cad,indice)
+					op2,index = evaluarPost(cad,index)
 				resul += str(float(eval(op1+operator+op2)))
 				if indiceInicial == -1:
-					print("El resultado de evaluar "+cad+" es {0:.2f}".format(float(resul)))
+					print("The result of eval "+cad+" es {0:.2f}".format(float(resul)))
 				else:
 					return resul, indiceInicial-3
 			else:
-				raise Exception("Operador erroneo encontrado: "+lista[indice])
+				raise Exception("Operator incorrect found: "+lista[index])
 		except TypeError:
 			pass
 		except Exception as e:
 			print(e)
 	else:
-		print("Expresion demasiado corta para ser evaluada")
+		print("Expression too short to be evaluated )
 
 		
 evaluarPost('1 3 4 + +',-1)
 
-#Solucion labo2 ejercicio 2 función que permite evaluar tanto notación prefija como postfija
-'''Si los indices son negativos se trata de postfija y si son positivos se trata de prefija'''
-def evaluarPreAndPost(cad,indice):
+#Solution labo2 exercise 2 function to eval  both arithmetic prefix and postfix notation
+'''Negative index postfix notation and positive index prefix notation'''
+def evaluarPreAndPost(cad,index):
 	if len(cad) >= 5:
 		op = ['+','-','*','/']
 		resul = ''
 		op1 = ''
 		op2 = ''
-		indiceInicial = indice
+		indiceInicial = index
 		lista = cad.split()
 		try:
-			if lista[indice] in op:
-				operator = lista[indice]
-				indice = preOrPostIndice(indice)
-				if lista[indice].isdigit():
-					op1 = lista[indice]
-					indice = preOrPostIndice(indice)
+			if lista[index] in op:
+				operator = lista[index]
+				index = preOrPostIndice(index)
+				if lista[index].isdigit():
+					op1 = lista[index]
+					index = preOrPostIndice(index)
 				else:
-					op1, indice = evaluarPreAndPost(cad,indice)
-				if lista[indice].isdigit():
-					op2 = lista[indice]
+					op1, index = evaluarPreAndPost(cad,index)
+				if lista[index].isdigit():
+					op2 = lista[index]
 				else:
-					op2,indice = evaluarPreAndPost(cad,indice)
+					op2,index = evaluarPreAndPost(cad,index)
 				resul += str(float(eval(op1+operator+op2)))
 				if indiceInicial == -1 or indiceInicial == 0:
-					print("El resultado de evaluar "+cad+" es {0:.2f}".format(float(resul)))
+					print("Result of eval "+cad+" is {0:.2f}".format(float(resul)))
 				else:
 					if indiceInicial >= 0:
 						return resul, preOrPostInicial(indiceInicial)
 					else:
 						return resul, preOrPostInicial(indiceInicial)
 			else:
-				raise Exception("Operador erroneo encontrado: "+lista[indice])
+				raise Exception("Operator incorrect found: "+lista[index])
 		except TypeError:
 			pass
 		except Exception as e:
 			print(e)
 	else:
-		print("Expresion demasiado corta para ser evaluada")
+		print("Expression too short to be evaluated")
 
 
-#Funciones auxiliares de la función evaluarPreAndPost
-'''revisa si el indice x pasado como argumento es un indice
-de estar evaluando notación prefija o postfija'''
+#Auxiliary functions of function evaluarPreAndPost
+'''text index x received as param is a index
+of eval prefix notation or postfix notation'''
 def preOrPostIndice(x):
 	if x >=0:
 		x+=1
@@ -191,9 +191,9 @@ def preOrPostIndice(x):
 		x-=1
 	return x
 	
-'''revisa si el indiceInicial x pasado como argumento es el indice de comienzo
-de evaluar una expresión y se incrementa(prefija) o decrementa(postfija) en 3 pues 
-toda expresión tiene longitud 3, dos operandos y un operador'''	
+'''test indiceInicial x received as param is index of start
+to eval a expression and increases(prefix) or decreases(postfix) 3  
+because all expression have length 3, two operands and one operator'''	
 def preOrPostInicial(x):
 	if x >=0:
 		x+=3
@@ -201,11 +201,11 @@ def preOrPostInicial(x):
 		x-=3
 	return x
 			
-#prueba función evaluarPreAndPost con expresión prefija		
+#test function evaluarPreAndPost with prefix expression		
 evaluarPreAndPost('/ - 1 3 * 4 6',0)
 
-#prueba función evaluarPreAndPost con expresión postfija
+#test function evaluarPreAndPost with postfix expression
 evaluarPreAndPost('1 3 4 + +',-1)
 
-#prueba función evaluarPreAndPost con expresión corta
+#test function evaluarPreAndPost with short expression 
 evaluarPreAndPost('1 +',-1)
