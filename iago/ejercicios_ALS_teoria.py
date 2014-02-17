@@ -80,3 +80,70 @@ def repetidos2(lista):
 	
 #test function repetidos class version 
 print(repetidos2([1,1,3,3,4]))
+
+'''Therory Class notes February 17, 2014'''
+
+#Dictionaries
+'''Two declarations for a dictionary'''
+d1 = dict()
+d2 = {}
+
+
+temperaturas = { "Vigo": 10.5, "Ourense": 7.2 }
+
+#Prin a value associated a Key Vigo
+print( temperaturas[ "Vigo" ] )
+
+#Insert/modify an element
+temperaturas[ "Oviedo"] = 8.5
+print( temperaturas[ "Oviedo" ] )
+
+#Print all elements dictionary
+for k,v in temperaturas.items():
+    print( k + ": " + str( v ) )
+    
+#Obtanin value of an element what aren't in dcitionary give value None
+tempBarcelona = temperaturas.get( "Barcelona" )
+
+
+if tempBarcelona != None:
+    print( "Barcelona: " + str( tempBarcelona ) )
+else:
+    print( "No hay datos de temperatura para esa ciudad" )
+    
+#Exercise repetidos with dictionary
+
+def repetDiccionario(l):
+    result = []
+    dic = {}
+    i = 0
+    for i in l:
+        if dic.get(i) == None:
+            dic[i] = 1
+        else:
+            dic[i] += 1
+        i+=1
+    for k,v in dic.items():
+        if v == 1:
+            result.append(k)
+    return result
+    
+#test function repetDiccionario            
+print( "Repetidos: " + str(repetDiccionario([1,1,2,3,4,4])))
+
+'''Function what count words, recive a string s and return
+occur frecuency of a word'''
+def cuentaPalabra(s):
+    dic = {}
+    i = 0
+    for i in s.strip().split():
+        if dic.get(i) == None:
+            dic[i] = 1
+        else:
+            dic[i] += 1
+    print(dic)
+
+#Test function cuentaPalabra with string in Spanish Language    
+cuentaPalabra("El perro de la huerta marrón es marrón")
+    
+    
