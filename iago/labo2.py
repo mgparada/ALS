@@ -63,7 +63,7 @@ def evaluar(cad,index):
 		try:
 			if lista[index] in '+-*/':
 				operator = lista[index]
-				index+=1;
+				index+=1
 				if lista[index].isdigit():
 					op1 = lista[index]
 					index+=1
@@ -124,7 +124,7 @@ def evaluarPost(cad,index):
 		try:
 			if lista[index] in '+-*/':
 				operator = lista[index]
-				index-=1;
+				index-=1
 				if lista[index].isdigit():
 					op1 = lista[index]
 					index-=1
