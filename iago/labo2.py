@@ -55,14 +55,13 @@ to second operand, second operand always start one position to right of
 first operand'''
 def evaluar(cad,index):
 	if len(cad) >= 5:
-		op = ['+','-','*','/']
 		resul = ''
 		op1 = ''
 		op2 = ''
 		indiceInicial = index
 		lista = cad.split()
 		try:
-			if lista[index] in op:
+			if lista[index] in '+-*/':
 				operator = lista[index]
 				index+=1;
 				if lista[index].isdigit():
@@ -70,15 +69,25 @@ def evaluar(cad,index):
 					index+=1
 				else:
 					op1, index= evaluar(cad,index)		
-				if lista[index].isdigit():
-					op2 = lista[index]
-				else:
-					op2,index = evaluar(cad,index)
-				resul += str(float(eval(op1+operator+op2)))
-				if indiceInicial == 0:
-					print("The resul of eval "+cad+" is {0:.2f}".format(float(resul)))
-				else:
-					return resul, indiceInicial+3
+					if lista[index].isdigit():
+						op2 = lista[index]
+					else:
+						op2,index = evaluar(cad,index)
+					resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
+					if indiceInicial == 0:
+						return "The resul of eval "+cad+" is {0:.2f}".format(float(resul))
+					else:
+						return resul, index+1
+				if index<=len(lista)-1:
+					if lista[index].isdigit():
+						op2 = lista[index]
+					else:
+						op2,index = evaluar(cad,index)
+					resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
+					if indiceInicial == 0:
+						return "The resul of eval "+cad+" is {0:.2f}".format(float(resul))
+					else:
+						return resul, index+1
 			else:
 				raise Exception("Operator incorrect found: "+lista[index])
 		except TypeError:
@@ -97,6 +106,9 @@ evaluar('/ - 1 3 * 4 6',0)
 #test function evaluar operator not admitted
 evaluar('/ ^ 1 3 * 4 6',0)
 
+#test evaluar large expression
+evaluar('- - - - 4 7 - 6 5 - - 3 2 - 1 6 - - - 2 4 - 3 2 - - 1 2 - 3 4',0)
+
 #Solution labo2 exercise 2 arithmetic postfix notation
 '''Last elem is operator, previous is digit if not 
 recursive function call with index where start new operator found, same
@@ -104,30 +116,39 @@ to second operand, second operand always start one position to left of
 first operand'''
 def evaluarPost(cad,index):
 	if len(cad) >= 5:
-		op = ['+','-','*','/']
 		resul = ''
 		op1 = ''
 		op2 = ''
 		indiceInicial = index
 		lista = cad.split()
 		try:
-			if lista[index] in op:
+			if lista[index] in '+-*/':
 				operator = lista[index]
-				index-=1
+				index-=1;
 				if lista[index].isdigit():
 					op1 = lista[index]
 					index-=1
 				else:
-					op1, index = evaluarPost(cad,index)
-				if lista[index].isdigit():
-					op2 = lista[index]
-				else:
-					op2,index = evaluarPost(cad,index)
-				resul += str(float(eval(op1+operator+op2)))
-				if indiceInicial == -1:
-					print("The result of eval "+cad+" es {0:.2f}".format(float(resul)))
-				else:
-					return resul, indiceInicial-3
+					op1, index= evaluar(cad,index)		
+					if lista[index].isdigit():
+						op2 = lista[index]
+					else:
+						op2,index = evaluar(cad,index)
+					resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
+					if indiceInicial == -1:
+						return "The resul of eval "+cad+" is {0:.2f}".format(float(resul))
+					else:
+						return resul, index-1
+				if index<=0:
+					if lista[index].isdigit():
+						op2 = lista[index]
+					else:
+						op2,index = evaluar(cad,index)
+					resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
+					if indiceInicial == -1:
+						return "The resul of eval "+cad+" is {0:.2f}".format(float(resul))
+					else:
+						return resul, index-1
 			else:
 				raise Exception("Operator incorrect found: "+lista[index])
 		except TypeError:
@@ -135,8 +156,7 @@ def evaluarPost(cad,index):
 		except Exception as e:
 			print(e)
 	else:
-		print("Expression too short to be evaluated )
-
+		print("Expression too short to be evaluated")
 		
 evaluarPost('1 3 4 + +',-1)
 
@@ -144,33 +164,41 @@ evaluarPost('1 3 4 + +',-1)
 '''Negative index postfix notation and positive index prefix notation'''
 def evaluarPreAndPost(cad,index):
 	if len(cad) >= 5:
-		op = ['+','-','*','/']
 		resul = ''
 		op1 = ''
 		op2 = ''
 		indiceInicial = index
 		lista = cad.split()
 		try:
-			if lista[index] in op:
+			if lista[index] in '+-*/':
 				operator = lista[index]
 				index = preOrPostIndice(index)
 				if lista[index].isdigit():
 					op1 = lista[index]
 					index = preOrPostIndice(index)
 				else:
-					op1, index = evaluarPreAndPost(cad,index)
-				if lista[index].isdigit():
-					op2 = lista[index]
-				else:
-					op2,index = evaluarPreAndPost(cad,index)
-				resul += str(float(eval(op1+operator+op2)))
-				if indiceInicial == -1 or indiceInicial == 0:
-					print("Result of eval "+cad+" is {0:.2f}".format(float(resul)))
-				else:
-					if indiceInicial >= 0:
-						return resul, preOrPostInicial(indiceInicial)
+					op1, index= evaluar(cad,index)		
+					if lista[index].isdigit():
+						op2 = lista[index]
 					else:
-						return resul, preOrPostInicial(indiceInicial)
+						op2,index = evaluar(cad,index)
+					resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
+					if indiceInicial == -1 or indiceInicial == 0 :
+						return "The resul of eval "+cad+" is {0:.2f}".format(float(resul))
+					else:
+						index = preOrPostIndice(index)
+						return resul, index
+				if index<=0 or index <=len(lista)-1:
+					if lista[index].isdigit():
+						op2 = lista[index]
+					else:
+						op2,index = evaluar(cad,index)
+					resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
+					if indiceInicial == -1 or indiceInicial == 0:
+						return "The resul of eval "+cad+" is {0:.2f}".format(float(resul))
+					else:
+						index = preOrPostIndice(index) 
+						return resul, index
 			else:
 				raise Exception("Operator incorrect found: "+lista[index])
 		except TypeError:
@@ -181,7 +209,7 @@ def evaluarPreAndPost(cad,index):
 		print("Expression too short to be evaluated")
 
 
-#Auxiliary functions of function evaluarPreAndPost
+#Auxiliary function of function evaluarPreAndPost
 '''text index x received as param is a index
 of eval prefix notation or postfix notation'''
 def preOrPostIndice(x):
@@ -190,17 +218,7 @@ def preOrPostIndice(x):
 	else:
 		x-=1
 	return x
-	
-'''test indiceInicial x received as param is index of start
-to eval a expression and increases(prefix) or decreases(postfix) 3  
-because all expression have length 3, two operands and one operator'''	
-def preOrPostInicial(x):
-	if x >=0:
-		x+=3
-	else:
-		x-=3
-	return x
-			
+
 #test function evaluarPreAndPost with prefix expression		
 evaluarPreAndPost('/ - 1 3 * 4 6',0)
 
