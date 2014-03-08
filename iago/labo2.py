@@ -81,7 +81,7 @@ def evaluar(cad,index):
 							op2,index = evaluar(cad,index)
 						#op2 can be 0 or 0.0
 						if  (float(op2) == 0) and operator == '/':
-							raise Exception("Divison by zero found")
+							raise Exception("Division by zero found")
 						else:
 							resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
 						if indiceInicial == 0:
@@ -94,7 +94,7 @@ def evaluar(cad,index):
 						else:
 							op2,index = evaluar(cad,index)
 						if  (float(op2) == 0) and operator == '/':
-							raise Exception("Divison by zero found")
+							raise Exception("Division by zero found")
 						else:
 							resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
 						if indiceInicial == 0:
@@ -102,7 +102,7 @@ def evaluar(cad,index):
 						else:
 							return resul, index+1
 				else:
-					raise Exception("Operator incorrect found: "+lista[index])
+					raise Exception("Incorrect operator found: "+lista[index])
 			except TypeError:
 				pass
 			except Exception as e:
@@ -153,7 +153,7 @@ def evaluarPost(cad,index):
 						else:
 							op2,index = evaluarPost(cad,index)
 						if  (float(op2) == 0) and operator == '/':
-							raise Exception("Divison by zero found")
+							raise Exception("Division by zero found")
 						else:
 							resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
 						if indiceInicial == -1:
@@ -166,7 +166,7 @@ def evaluarPost(cad,index):
 						else:
 							op2,index = evaluarPost(cad,index)
 						if  (float(op2) == 0) and operator == '/':
-							raise Exception("Divison by zero found")
+							raise Exception("Division by zero found")
 						else:
 							resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
 						if indiceInicial == -1:
@@ -174,7 +174,7 @@ def evaluarPost(cad,index):
 						else:
 							return resul, index-1
 				else:
-					raise Exception("Operator incorrect found: "+lista[index])
+					raise Exception("Incorrect operator found: "+lista[index])
 			except TypeError:
 				pass
 			except Exception as e:
@@ -212,7 +212,7 @@ def evaluarPreAndPost(cad,index):
 						else:
 							op2,index = evaluarPreAndPost(cad,index)
 						if  (float(op2) == 0) and operator == '/':
-							raise Exception("Divison by zero found")
+							raise Exception("Division by zero found")
 						else:
 							resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
 						if indiceInicial == -1 or indiceInicial == 0 :
@@ -226,7 +226,7 @@ def evaluarPreAndPost(cad,index):
 						else:
 							op2,index = evaluar(cad,index)
 						if  (float(op2) == 0) and operator == '/':
-							raise Exception("Divison by zero found")
+							raise Exception("Division by zero found")
 						else:
 							resul += str(float(eval(str(float(op1))+operator+str(float(op2)))))
 						if indiceInicial == -1 or indiceInicial == 0:
@@ -235,7 +235,7 @@ def evaluarPreAndPost(cad,index):
 							index = preOrPostIndice(index) 
 							return resul, index
 				else:
-					raise Exception("Operator incorrect found: "+lista[index])
+					raise Exception("Incorrect operator found: "+lista[index])
 			except TypeError:
 				pass
 			except Exception as e:
@@ -247,7 +247,7 @@ def evaluarPreAndPost(cad,index):
 
 
 #Auxiliary function of function evaluarPreAndPost
-'''text index x received as param is a index
+'''test index x received as param is a index
 of eval prefix notation or postfix notation'''
 def preOrPostIndice(x):
 	if x >=0:
