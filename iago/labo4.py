@@ -1,5 +1,4 @@
-#Menu not finished
-
+#class metodos comunes a Amigo y Trabajo
 class Contacto:
 	def __init__( self, name, email ):
 		self.name = name
@@ -29,6 +28,7 @@ class Trabajo(Contacto):
 	def getEmpresa( self ):
 		return self.empresa
 
+	#sobreescribe el de Contacto para mostrar tambien la empresa
 	def __str__( self ):
 		return str.format("{0} Empresa: {1}\n",
 						  Contacto.__str__( self ),
@@ -38,7 +38,9 @@ class Trabajo(Contacto):
 class Agenda:
 	def __init__( self ):
 		self.agenda = dict()
-		
+	
+	'''se inserta en agenda, clave name y valor ya formateado para usarlo en
+	print'''
 	def insertar( self, person ):
 		if isinstance(person,Trabajo):
 			self.agenda[person.getName()] = Trabajo.__str__(person)
@@ -51,7 +53,9 @@ class Agenda:
 			return self.agenda[name]
 		except:
 			print("No se ha encontrado a "+name)
-			return -1
+			return None
+			
+			
 	
 	def borrar( self, name ):
 		try:
@@ -70,12 +74,13 @@ class Agenda:
 			print("La agenda esta vacia")
 			
 class Menu:
-	def __init__( self, agenda ):
-		self.op = -1
-		self.agenda = agenda
+	def __init__( self ):
+		self.agenda = Agenda()
 		self.showMenu()
 
+	#Menu principal
 	def showMenu( self ):
+		print("Menu opciones")
 		print("1.Introducir")
 		print("2.Buscar")
 		print("3.Borrar")
@@ -83,34 +88,40 @@ class Menu:
 		print("5.Salir")
 		self.pedirOpcion()
 
+	
 	def pedirOpcion( self ):
 		try:
 			self.op = int(raw_input("Escoja opcion 1,2,3,4. 5 " +
 				                "para cerrar programa\n"))
 			self.ejecutarOp()
 		except:
-			print("Introduce 1,2,3,4 o 5")
+			'''print("Introduce 1,2,3,4 o 5")'''
 			self.showMenu()
 
+	#lleva a cabo la opcion escogida por el usuario
 	def ejecutarOp( self ):
 		if self.op == 1:
 			self.insertar()
 		elif self.op == 2:
 			self.buscar()
 		elif self.op == 3:
-			self.pedirBuscarBorrar()
+			self.borrar()
 		elif self.op == 4:
-			agenda.listar()
+			self.listar()
 		elif self.op == 5:
 			print("Cerrando programa")
 		else:
+			print("Introducido "+str(self.op)+': opcion erronea')
+			print("Introduce 1,2,3,4 o 5")
 			self.showMenu() 
 	
+	#datos comunes a insertar amigo y trabajo
 	def datosComunes( self ):
 		name = raw_input("Introduzca nombre de contacto: ")
 		email = raw_input("Introduzca email de "+name+':')
 		return name, email
 	
+	#nombre solicitado por buscar y borrar
 	def pedirNombre( self ):
 		name = raw_input("Introduzca nombre de contacto: ")
 		return name
@@ -125,34 +136,35 @@ class Menu:
 			name, email = self.datosComunes()
 			empresa = raw_input("Introduzca empresa de "+name+': ')
 			self.agenda.insertar(Trabajo(name,email,empresa))
+		else:
+			print("Introducido "+tipo+",esperado amigo o trabajo")
 		self.showMenu()
-		
+	
+	#si no se encuentra agenda devuelve None
 	def buscar( self ):
 		name = self.pedirNombre()
-		print(self.agenda.buscar(name))
+		found = self.agenda.buscar(name)
+		if found != None:
+			print(found)
 		self.showMenu()
-		
-			
-		
-
-
-
-        
 	
-			
+	def borrar( self ):
+		name = self.pedirNombre()
+		self.agenda.borrar(name)
+		self.showMenu()
+	
+	def listar( self ):
+		self.agenda.listar()
+		self.showMenu()
+	
+
+		
 def main():
-	agenda = Agenda()
-	'''borrar estas pruebas al poner el menu o dejar
-	para empezar con datos, eso si borrar listar y buscar'''
-	pepe = Amigo("pepe","p@gmail.com")
-	manuel = Trabajo("manuel","m@m.es","manuel@am.es")
-	agenda.insertar(pepe)
-	agenda.insertar(manuel)
-	agenda.listar()
-	agenda.buscar("pepe")
-	Menu(agenda)
+	Menu()
 	
 	
-			
+#para ejecutar main() al pulsar Run		
 if __name__=="__main__":main()
+
+
 
