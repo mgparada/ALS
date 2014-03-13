@@ -1,4 +1,4 @@
-#class metodos comunes a Amigo y Trabajo
+#class with common methods to Amigo and Trabajo
 class Contacto:
 	def __init__( self, name, email ):
 		self.name = name
@@ -11,7 +11,7 @@ class Contacto:
 		return self.email
 
 	def __str__( self ):
-		return str.format(" Nombre: {0}\n Email: {1}\n",
+		return str.format(" Name: {0}\n Email: {1}\n",
 					self.getName(),
 					self.getEmail())
 
@@ -28,9 +28,8 @@ class Trabajo(Contacto):
 	def getEmpresa( self ):
 		return self.empresa
 
-	#sobreescribe el de Contacto para mostrar tambien la empresa
 	def __str__( self ):
-		return str.format("{0} Empresa: {1}\n",
+		return str.format("{0} Company: {1}\n",
 						  Contacto.__str__( self ),
 						self.getEmpresa())		
 
@@ -39,20 +38,18 @@ class Agenda:
 	def __init__( self ):
 		self.agenda = dict()
 	
-	'''se inserta en agenda, clave name y valor ya formateado para usarlo en
-	print'''
 	def insertar( self, person ):
 		if isinstance(person,Trabajo):
 			self.agenda[person.getName()] = Trabajo.__str__(person)
 		elif isinstance(person,Amigo):
 			self.agenda[person.getName()] = Amigo.__str__(person)
-		print("Se ha insertado con exito "+person.getName())
+		print("Correct inserted "+person.getName())
 	
 	def buscar( self, name ):
 		try:
 			return self.agenda[name]
 		except:
-			print("No se ha encontrado a "+name)
+			print("Not found "+name)
 			return None
 			
 			
@@ -61,17 +58,17 @@ class Agenda:
 		try:
 			self.buscar(name)
 			del self.agenda[name]
-			print("se ha borrado con exito")
+			print("Correct deleted")
 		except:
-			print("Se cancela el borrado")
+			print("Cancel delete")
 	
 	def listar( self ):
 		if len(self.agenda.items()) > 0:
 			for k,v in self.agenda.items():
-				print("Datos de "+k)
+				print("Data of "+k)
 				print(self.buscar(k))
 		else:
-			print("La agenda esta vacia")
+			print("Empty address book")
 			
 class Menu:
 	def __init__( self ):
@@ -80,25 +77,24 @@ class Menu:
 
 	#Menu principal
 	def showMenu( self ):
-		print("Menu opciones")
-		print("1.Introducir")
-		print("2.Buscar")
-		print("3.Borrar")
-		print("4.Listar")
-		print("5.Salir")
+		print("Menu options")
+		print("1.Insert")
+		print("2.Search")
+		print("3.Delete")
+		print("4.List")
+		print("5.Exit")
 		self.pedirOpcion()
 
 	
 	def pedirOpcion( self ):
 		try:
-			self.op = int(raw_input("Escoja opcion 1,2,3,4. 5 " +
-				                "para cerrar programa\n"))
+			self.op = int(raw_input("Input option 1,2,3,4. 5 " +
+				                "to finish program\n"))
 			self.ejecutarOp()
 		except:
-			'''print("Introduce 1,2,3,4 o 5")'''
+			'''print("Input 1,2,3,4 o 5")'''
 			self.showMenu()
 
-	#lleva a cabo la opcion escogida por el usuario
 	def ejecutarOp( self ):
 		if self.op == 1:
 			self.insertar()
@@ -109,38 +105,35 @@ class Menu:
 		elif self.op == 4:
 			self.listar()
 		elif self.op == 5:
-			print("Cerrando programa")
+			print("End program")
 		else:
-			print("Introducido "+str(self.op)+': opcion erronea')
-			print("Introduce 1,2,3,4 o 5")
+			print("You input "+str(self.op)+': wrong option')
+			print("Input 1,2,3,4 o 5")
 			self.showMenu() 
 	
-	#datos comunes a insertar amigo y trabajo
 	def datosComunes( self ):
-		name = raw_input("Introduzca nombre de contacto: ")
-		email = raw_input("Introduzca email de "+name+':')
+		name = raw_input("Input contact name: ")
+		email = raw_input("Input "+name+" email's: ")
 		return name, email
 	
-	#nombre solicitado por buscar y borrar
 	def pedirNombre( self ):
-		name = raw_input("Introduzca nombre de contacto: ")
+		name = raw_input("Input contact name: ")
 		return name
 	
 	def insertar( self ):
-		print("Tipo de contacto")
-		tipo = raw_input("Escoja amigo o trabajo: ")
-		if tipo == "amigo":
+		print("Contact type")
+		tipo = raw_input("Input friend or work: ")
+		if tipo == "friend":
 			name, email = self.datosComunes()
 			self.agenda.insertar(Amigo(name,email))
-		elif tipo == "trabajo":
+		elif tipo == "work":
 			name, email = self.datosComunes()
-			empresa = raw_input("Introduzca empresa de "+name+': ')
+			empresa = raw_input("Input "+name+" company's: ")
 			self.agenda.insertar(Trabajo(name,email,empresa))
 		else:
-			print("Introducido "+tipo+",esperado amigo o trabajo")
+			print("You input "+tipo+",expected friend or work")
 		self.showMenu()
 	
-	#si no se encuentra agenda devuelve None
 	def buscar( self ):
 		name = self.pedirNombre()
 		found = self.agenda.buscar(name)
@@ -162,8 +155,6 @@ class Menu:
 def main():
 	Menu()
 	
-	
-#para ejecutar main() al pulsar Run		
 if __name__=="__main__":main()
 
 
