@@ -59,28 +59,6 @@ def repetidos(l):
 print(numOccurs([1,1,2,3,4,4,5,5,5,5,6,5], 1))
 print(repetidos([1,1,2,3,4,4,5,5,5,5,6,5]))
 
-#solution repetidos in class 11 febrero 2014
-def repetidos2(lista):
-	aux = []
-	l = []
-	for x in lista:
-		i = 0
-		while i < len(aux):
-			if x == aux[i][0]:
-				aux[i][1]+=1
-				break
-			i+=1
-		if i >= len(aux):
-			aux.append([x,1])
-
-	for x in aux:
-		if x[1] > 1:
-			l.append(x[0])
-	return l
-	
-#test function repetidos class version 
-print(repetidos2([1,1,3,3,4]))
-
 '''Therory Class notes February 17, 2014'''
 
 #Dictionaries
@@ -124,7 +102,7 @@ def repetDiccionario(l):
             dic[i] += 1
         i+=1
     for k,v in dic.items():
-        if v == 1:
+        if v > 1:
             result.append(k)
     return result
     
