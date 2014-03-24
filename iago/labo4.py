@@ -1,4 +1,6 @@
+import pickle
 #class with common methods to Amigo and Trabajo
+
 class Contacto:
 	def __init__( self, name, email ):
 		self.name = name
@@ -36,7 +38,13 @@ class Trabajo(Contacto):
 
 class Agenda:
 	def __init__( self ):
-		self.agenda = dict()
+		try:
+			f = open("agenda.bin","rb")
+			self.agenda = pickle.load(f).agenda
+			f.close()
+			
+		except:
+			self.agenda = dict()
 	
 	def insertar( self, person ):
 		if isinstance(person,Trabajo):
@@ -105,6 +113,9 @@ class Menu:
 		elif self.op == 4:
 			self.listar()
 		elif self.op == 5:
+			f = open("agenda.bin","wb")
+			pickle.dump(self.agenda,f)
+			f.close()
 			print("End program")
 		else:
 			print("You input "+str(self.op)+': wrong option')
