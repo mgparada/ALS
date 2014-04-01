@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<title>Conversor Grados Fahrenheit / Celsius</title>
+	</head>
+	<body> 
+		<form method="POST" action="/convert">
+			<p> Grados a convertir </p>
+			<input type="number" name="number" value="Grados"/>
+			<div id="error_input"></div>
+			<select name="option">	
+				<option value="celsius">Celsius</>
+				<option value="farenheit">Farenheit</>
+			</select>
+			
+			<input type="submit" value="Enviar"/>
+		</form>
+	</body>
+	<script>
+		$("input").focusout(function(){
+			console.log(this.val())
+		//	if (typeof(this.val()) == "number" )
+		//		$("#error_input").text("Debes introducir un número");
+		});
+	</script>
+</html>
