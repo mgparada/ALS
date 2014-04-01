@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Celsius a farenheit</title>
+		<script>
+		function validate() {
+			var frmInput = document.getElementById("frmInput");
+			var gradesFar = frmInput["gradesFar"].value.trim();
+			var divError = document.getElementById("error");
+
+			if (gradesFar.length === 0) {
+				divError.style.display = "block";
+				return false;
+			} else {
+				divError.style.display = "none";
+				return true;
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<form id="frmInput" onSubmit="return validate();" action="/convert" method="post">
+		<p>
+			Cantidad a convertir (en Farenheit):
+			<input name ="gradesFar" type="text" id="gradesFar">
+		</p>
+		<input type="submit" value="enviar">
+
+		<div id="error" style="display:none">ERRORRRRRRRR</div>
+	</body>
+</html>
