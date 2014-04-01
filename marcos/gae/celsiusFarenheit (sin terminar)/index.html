@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>Celsius a farenheit</title>
+		<script>
+		function farenheitToCelsius() {
+			var frmInput = document.getElementById("frmInput");
+			result = (frmInput["gradesFar"].value - 32) / 1.8);
+			
+			return result;
+		}
+		</script>
+	</head>
+	<body>
+		<form id="frmInput" onSubmit="return farenheitToCelsius();" action="/convert" method="post">
+		<p>
+			Cantidad a convertir (en Farenheit):
+			<input type="text" id="gradesFar" />
+		</p>
+		<input type="submit" value="enviar">
+
+		<div id="error"></div>
+	</body>
+</html>
