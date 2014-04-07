@@ -1,0 +1,20 @@
+<html>
+	<head>
+		 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<title>Conversor Grados Fahrenheit / Celsius</title>
+	</head>
+	<body> 
+		<p> Grados a convertir </p>
+		<input type="number" id="numero_grados" />
+
+		<script>
+			$("#numero_grados").keyup(function(){
+				$.ajax({
+					type: "POST",
+					url: "/",
+					data: { }
+				});
+			});
+		</script>
+	</body>
+</html>

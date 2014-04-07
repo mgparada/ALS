@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>SaludaME</title>
+<script>
+
+	function hideError()
+	{
+		var divError = document.getElementById("error");
+		//divError.style.display = "none";
+		divError.innerHTML = "hola";
+	}
+
+	function showError(msg)
+	{
+		var divError = document.getElementById("error");
+		divError.style.display = "block";
+		divError.innerHTML = msg;
+	}
+		
+	
+	function validate()
+	{
+		var toret = false;
+		var frmInput = document.getElementById( "frmInput" );
+		// Prepare answer, in case it is needed.
+		hideError();
+		// Prepare values
+		var name = frmInput[ "name" ].value.trim();
+
+		if ( name.length === 0 ) {
+			showError( "debe introducir un nombre." );
+		}
+		else
+		{
+			toret = true;
+		}
+			return toret;
+	}
+
+</script>
+
+</head>
+<body>
+	<h1 style="color:blue">SaludaME</h1>
+	<p>
+	<div id="form" style="display:block">
+		<form
+			id="frmInput" action="/hi" method="post"
+			style="background-color:lightgray"
+			onSubmit="return validate();">
+			<p>Tu nombre: <input type="text"
+						name="name" id="name"
+						size="10"
+						placeholder="tu nombre..."
+						style="border:none;background-color:lightgray"/>
+			</p>
+			<input
+				type="submit"
+				value="Enviar">
+			</form>
+	</div>
+<div id="error" style="background-color:red;color:white;display:none">
+ERRORasdfsdf
+</div>
+</body>
+</html>
