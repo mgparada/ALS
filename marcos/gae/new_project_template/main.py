@@ -17,20 +17,9 @@
 import webapp2
 
 class MainHandler(webapp2.RequestHandler):
-	def __init__(self, request=None, response=None):
-		self.initialize(request, response)
-		self.gradesFar = 0
-		self.gradesCel = 0
-		self.answer = ""
-
-	def get(self):
+	def get(
 		self.response.write('Hello world!')
 
-	def post(self):
-		if (self.gradesFar != 0):
-			self.answer = str.format("<html><body>Resultado (celsius): {0}<form input type='button' onClick='history.go(-1); return true;'></html>", self.gradesCel)
-		self.response.write(self.answer)
-
 app = webapp2.WSGIApplication([
-	('/convert', MainHandler)
+	('/', MainHandler)
 	], debug=True)
