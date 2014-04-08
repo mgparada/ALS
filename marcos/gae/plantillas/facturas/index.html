@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>Facturas: Introduce tu factura!</title>
+</head>
+<body>
+	<fieldset>
+		<legend>Facturas: Introduce tu factura: </legend>
+		<form id="frmEmisor" method="POST" action="/facturas">
+			<p>CIF: <input type="text" name="cif" size=12 /></p>
+			<p>Nombre: <input type="text" name="nombre" size=20 /></p>
+			<p>Dirección: <input type="text" name="direccion" size=35 />
+					Código postal: <input type="text" name="cp" size=8 />
+					País: <input type="text" name="pais" size=20 /></p>
+			<p>	Usuario contacto: <input type="text" name="contacto" size=20 /></p>
+			<p>	Correo electrónico: <input type="text" name="email" size=25 />
+				Teléfono: <input type="text" name="telefono" size=12 /></p>
+			<p><input type="submit" />
+		</form>
+	</fieldset>
+</body>
+</html>
