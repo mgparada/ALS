@@ -1,5 +1,5 @@
 import pickle
-'''Usar bajo tu responsabilidad, crea objetos din�micos y los hace persistentes
+'''Usar bajo tu responsabilidad, crea objetos dinamicos y los hace persistentes
 pero hace uso de exec y puedes lanzar comandos de sistema si usas eso 
 como nombres de tus objetos, methodos o atributos'''
 #Class acceso a datos
