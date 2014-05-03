@@ -100,10 +100,13 @@ class Interprete:
 	
 	'''Implementa un metodo de un objeto'''	
 	def modMethod( self, objeto, method,val):
-		self.objetos[objeto]['Methods'][objeto+'_'+method] = val
-		exec(val)
-		aux = objeto+'.'+objeto+'_'+method+'= eval(method)'
-		exec(aux)	
+		if val.startswith('def '):
+			self.objetos[objeto]['Methods'][objeto+'_'+method] = val
+			exec(val)
+			aux = objeto+'.'+objeto+'_'+method+'= eval(method)'
+			exec(aux)
+		else:
+			print("Payload o inesperado detectado y eliminado")
 	
 	'''lista todos los objetos, sus metodos y atributos'''	
 	def listar( self ):
@@ -239,7 +242,6 @@ class Menu:
 			if self.interprete.hasMethod(obj,meth):
 				val = raw_input("Introduce implementacion "+
 				"metodo: ")
-				print(val);print(meth);print(obj)
 				self.interprete.modMethod(obj,meth,val)
 			else:
 				print("Metodo "+meth+" no existe "+
