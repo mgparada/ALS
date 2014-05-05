@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="mauro gomez parada">
+
+    <title>Facturación Online</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="/css/stylish-portfolio.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Side Menu -->
+    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand"><span>Facturación Online</span></li>
+            <li><a href="#top">Principal</a></li>
+            <li><a href="#about">Información</a></li>
+            <li><a href="#services">Servicios</a></li>
+            <li><a href="#signIn">LogIn/Registro</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </div>
+    <!-- /Side Menu -->
+
+    <!-- Full Page Image Header Area -->
+    <div id="top" class="header">
+        <div class="vert-text">
+            <h1>Facturación Online</h1>
+            <h3>
+                <em>Crea</em> tus propias facturas,
+                <em>Lleva</em> el gasto sin preocuparte.</h3>
+            <a href="#about" class="btn btn-default btn-lg more-btn">Obtén más información!</a>
+        </div>
+    </div>
+    <!-- /Full Page Image Header Area -->
+
+    <!-- Intro -->
+    <div id="about" class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <h2>No te preocupes más por tus facturas, ahora tus gastos los tendrás controlados!</h2>
+                    <p class="lead">Ahora podrás realizar todas las facturas que necesites desde esta página y almacenar los gastos y los pagos sin preocuparte de perderlos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Intro -->
+
+    <!-- Services -->
+    <div id="services" class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <h2>Qué ofrecemos</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2 text-center">
+                    <div class="service-item">
+                        <i class="service-icon fa fa-user"></i>
+                        <h4>Perfil Personalizado</h4>
+                        <p>Obtén un perfil personalizado. Registra a tu empresa y obtendrás un perfil personalizado en el que podrás empezar a gestionar tus gastos.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="service-item">
+                        <i class="service-icon fa fa-laptop"></i>
+                        <h4>Tus facturas Online</h4>
+                        <p>Podrás consultar todas tus facturas y gastos siempre que lo necesites, 24 horas los 7 días de la semana. Tus facturas online.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                	<div class="service-item">
+                        <i class="service-icon fa fa-pencil"></i>
+                        <h4>Actualiza tus gastos</h4>
+                        <p>Podrás mantener al día tus gastos y pagos siempre que lo necesites. Actualíza tus gastos y mantén tú empresa al día. </p>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                	<div class="service-item">
+                        <i class="service-icon fa fa-list-alt"></i>
+                        <h4>Resúmen de tus facturas</h4>
+                        <p>Obtén un resumen claro y consiso de tus facturas. Te ofrecemos un listado completo con tus facturas mensuales y tus gastos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Services -->
+
+    <!-- Callout -->
+    <div id="signIn" class="callout">
+    
+    	<div class="form login">
+    		<form name="login_form" class="bs-example bs-example-form" role="form" method="post" action="/register/doLogin">
+    			<div class="input-group input-group-lg">    			
+    				<div class="input-group input-group-lg username sign-in">
+    					<span class="input-group-addon">@</span>
+				  		<input id="login_email" type="email" class="form-control" placeholder="Email">
+    				</div>
+    				<div class="input-group input-group-lg sign-in">
+    					<span class="input-group-addon">#</span>
+				  		<input id="login_pass" type="password" class="form-control" placeholder="Password">
+    				</div>
+    				<div class="input-group input-group-lg sign-in">
+						<input type="submit" style="width: 140%;" class="form-control" value="Entrar" />
+					</div>
+				</div>
+  			</form>
+    	</div>
+    	
+    	<div class="form registration">
+    		<form name="registration_form" class="bs-example bs-example-form" role="form" method="post" action="/register">
+    			<div class="input-group input-group-lg">
+    				<div class="input-group input-group-lg sign-in">
+    					<span class="input-group-addon">></span>
+				  		<input id="register-name" name="name" type="text" class="form-control" placeholder="Name">
+    				</div>
+    				<div class="input-group input-group-lg username sign-in">
+    					<span class="input-group-addon">@</span>
+				  		<input id="register-email" name="email"  type="email" class="form-control" placeholder="Email">
+    				</div>
+    				<div class="input-group input-group-lg sign-in">
+    					<span class="input-group-addon">#</span>
+				  		<input id="register-pass" name="password" type="password" class="form-control" placeholder="Password">
+    				</div>
+    				<div class="input-group input-group-lg sign-in">
+						<input type="submit" style="width: 140%;" class="form-control" value="Empieza ya!" />
+					</div>
+				</div>
+  			</form>
+    	</div>
+    	
+    	<div class="button_div registered_div">
+    		<input type="button" class="btn btn-default btn-lg registration-btn" value="Regístrate!" />
+    	</div>
+    	
+    	<div class="button_div login_div">
+    		<input type="button" class="btn btn-default btn-lg login-btn" value="Entra!" />
+    	</div>
+    </div>
+    <!-- /Callout -->
+
+    <!-- Map -->
+    <div id="contact" class="map">
+        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.es/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=campus+de+Ourense+-+Edificio+Polit%C3%A9cnico+-+32004+OURENSE&amp;aq=&amp;sll=42.229518,-8.056468&amp;sspn=0.462163,1.056747&amp;t=h&amp;ie=UTF8&amp;hq=campus+de+Ourense+-+Edificio+Polit%C3%A9cnico+-&amp;hnear=Orense,+Ourense,+Galicia&amp;ll=42.344462,-7.856163&amp;spn=0.01908,0.01698&amp;output=embed"></iframe>
+        <br />
+        <small>
+        	<a href="https://maps.google.es/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=&amp;q=campus+de+Ourense+-+Edificio+Polit%C3%A9cnico+-+32004+OURENSE&amp;aq=&amp;sll=42.229518,-8.056468&amp;sspn=0.462163,1.056747&amp;t=h&amp;ie=UTF8&amp;hq=campus+de+Ourense+-+Edificio+Polit%C3%A9cnico+-&amp;hnear=Orense,+Ourense,+Galicia&amp;ll=42.344462,-7.856163&amp;spn=0.01908,0.01698" style="color:#0000FF;text-align:left"></a>
+        </small>
+        </iframe>
+    </div>
+    <!-- /Map -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <ul class="list-inline">
+                        <li>
+							<a href="https://www.facebook.com/ESEIdojos" target="_blank">
+                        		<i class="fa fa-twitter fa-3x"></i>
+                        	</a>
+                        </li>
+                        <li>
+                        	<a href="https://twitter.com/eseiuvigo" target="_blank">
+                        		<i class="fa fa-facebook fa-3x"></i>
+                       		</a>
+                        </li>
+                        <li>
+                        	<a href="http://esei.uvigo.es" target="_blank">
+                        		<i class="fa fa-dribbble fa-3x"></i>
+                        	</a>
+                        </li>
+                    </ul>
+                    <div class="top-scroll">
+                        <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
+                    </div>
+                    <hr>
+                    <p>Copyright &copy; Mauro Gómez Parada - 2013</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /Footer -->
+
+    <!-- JavaScript -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script src="/js/bootstrap.js"></script>
+
+    <script>
+    	$(document).ready(function(){
+			if( $.cookie("login") == 1 ) {
+				$('<li><a href="/dash">Dashboard</a></li>').insertAfter("a[href='#top']")
+
+				$(".login").css("display", "none")
+				$(".registration").css("display", "none")
+				$(".registered_div").css("display", "none")
+				$(".login_div").css("display", "none")
+			}
+			 
+			if( $('.login').is(":visible") ) {
+				$(".registration").css("display", "none")
+				$(".registered_div").css("display", "")
+				$(".login_div").css("display", "none")
+			}
+
+		});
+    </script>
+    
+    <script>
+	    $(".registration-btn").on("click", function(e) {
+	    	e.preventDefault();
+	    	
+			$(".login").css("display", "none")
+			$(".registration").css("display", "" )
+			$('.registered_div').css('display', 'none')
+			$('.login_div').css('display', '')
+		});
+	
+	    $(".login-btn").on("click", function(e) {
+	    	e.preventDefault();
+	    	
+			$(".login").css("display", "")
+			$(".registration").css("display", "none" )
+			$('.registered_div').css('display', '')
+			$('.login_div').css('display', 'none')
+		});
+    </script>
+    
+    <script>
+		$("input[value='Entrar']").on("click", function(e){
+			e.preventDefault();
+
+			email = $("#login_email").val();
+			pass = $("#login_pass").val();
+
+			$.ajax({
+				type: 'GET',
+				url: '/register/doLogin', 
+				data: {'email': email, 'password': pass}
+			})
+			.done(function(data){
+					if (data == "True")
+						window.location.href = "/dash";
+					else
+						alert("El usuario no está registrado, o los datos introducidos son incorrectos.")
+			})
+			
+		});
+    </script>
+    
+    <script>
+		$("input[value='Empieza ya!']").on("click", function(e){
+			e.preventDefault();
+			
+			name = $('#register-name').val();
+			email = $("#register-email").val();
+			pass = $("#register-pass").val();
+
+			$('#register-name').parent().removeClass("has-error has-feedback");
+			$('#register-email').parent().removeClass("has-error has-feedback");;
+			$('#register-pass').parent().removeClass("has-error has-feedback");
+			
+			if( name.length <= 0 || email.length <= 0 || pass.length <= 0 ) {
+				if(name.length <= 0 ) $('#register-name').parent().addClass("has-error has-feedback"); 
+				if(email.length <= 0 ) $('#register-email').parent().addClass("has-error has-feedback");
+				if(pass.length <= 0 ) $('#register-pass').parent().addClass("has-error has-feedback");
+			}else{
+				$.ajax({
+					type: 'GET',
+					url: '/register/checkEmail', 
+					data: {'email': email}
+				})
+				.done(function(data){
+				 	if(data == "False") {
+				 		$('#register-email').parent().addClass("has-error has-feedback")
+				 		var message_div = 
+					 		'<div class="popover fade top in" style="display: block; top: -41px;left: 15px;">'
+					 			+ '<div class="arrow"></div>'
+					 			+ '<h3 class="popover-title" style="display: none;"></h3>'
+					 			+ '<div class="popover-content" style="color:black">Este e-Mail ya está en uso.</div>'
+					 		+'</div>';
+
+				 		$(message_div).insertBefore('#register-email')
+				 	}else
+				 		$("form[name='registration_form']").submit()
+				})
+			}
+		});
+    </script>
+    
+    <script>
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+    <script>    
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
+
+</body>
+
+</html>
