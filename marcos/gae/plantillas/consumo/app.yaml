@@ -9,6 +9,10 @@ handlers:
   static_files: index.html
   upload: index.html
 
+- url: /validation\.js
+  static_files: validation.js
+  upload: validation.js
+
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico

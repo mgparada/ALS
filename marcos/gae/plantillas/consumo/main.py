@@ -57,11 +57,8 @@ class MainHandler(webapp2.RequestHandler):
 				'avgVelocity' : avgVelocity
 			}
 
-			self.answer = str.format('<html><body>'
-							'<p>Velocity average: {0}'
-							'<p>Total Consumption: {1}'
-							'</body></html>', 
-							avgVelocity, totalConsumption)
+			template = JINJA_ENVIRONMENT.get_template('answer.html');
+			self.answer = template.render(template_values);
 		else:
 			self.answer = "<html><body>ERROR: Introducir numeros mayores que 0.</body></html>"
 

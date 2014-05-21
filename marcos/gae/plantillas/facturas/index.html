@@ -1,21 +1,25 @@
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Facturas: Introduce tu factura!</title>
+	<link rel="stylesheet" type="text/css" href="index.css" />
+	<script 
 </head>
 <body>
-	<fieldset>
-		<legend>Facturas: Introduce tu factura: </legend>
-		<form id="frmEmisor" method="POST" action="/facturas">
-			<p>CIF: <input type="text" name="cif" size=12 /></p>
-			<p>Nombre: <input type="text" name="nombre" size=20 /></p>
-			<p>Dirección: <input type="text" name="direccion" size=35 />
-					Código postal: <input type="text" name="cp" size=8 />
-					País: <input type="text" name="pais" size=20 /></p>
-			<p>	Usuario contacto: <input type="text" name="contacto" size=20 /></p>
-			<p>	Correo electrónico: <input type="text" name="email" size=25 />
-				Teléfono: <input type="text" name="telefono" size=12 /></p>
-			<p><input type="submit" />
-		</form>
-	</fieldset>
+	<form id="frmEmisor" method="post" action="/facturas">
+		<fieldset>
+			<legend>Facturas: Introduce tu factura: </legend>
+
+			<p>CIF: <input type="text" name="cif" class="stdinput" size=12 /></p>
+			<p>Nombre: <input type="text" name="nombre" class="stdinput" size=20 /></p>
+			<p>Dirección: <input type="text" name="direccion" class="stdinput" size=35 />
+					Código postal: <input type="number" name="cp" class="stdinput" size=8 />
+					País: <input type="text" name="pais" class="stdinput" size=20 /></p>
+			<p>	Usuario contacto: <input type="text" name="contacto" class="stdinput" size=20 /></p>
+			<p>	Correo electrónico: <input type="text" name="email" class="stdinput" size=25 />
+				Teléfono: <input type="number" name="telefono" class="stdinput" size=12 /></p>
+			<p><input type="submit" class="stdButton" />
+		</fieldset>
+	</form>
 </body>
 </html>
